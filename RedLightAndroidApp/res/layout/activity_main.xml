@@ -1,4 +1,25 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frame"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+ <!--   <com.google.android.maps.MapView
+        	android:id="@+id/mapView"
+        	android:apiKey="AIzaSyCGjKzepGfAL6HlA9Q5sD6hX78TWqBlhP4"
+        	android:layout_width="fill_parent"
+        	android:layout_height="fill_parent"
+        	android:clickable="true" />
+  -->
+  	<fragment 
+ 		android:id="@+id/map"
+		android:layout_width="match_parent"
+ 		android:layout_height="match_parent"
+ 		class="com.google.android.gms.maps.SupportMapFragment"/>
+
+</LinearLayout>
+<!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,3 +49,4 @@
     </EditText>
 
 </RelativeLayout>
+-->

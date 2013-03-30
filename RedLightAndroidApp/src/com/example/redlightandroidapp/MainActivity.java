@@ -1,15 +1,25 @@
 package com.example.redlightandroidapp;
 
-import android.os.Bundle;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends FragmentActivity {
+	
+	//Google Map
+	private GoogleMap map;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		map = ((SupportMapFragment)  getSupportFragmentManager().findFragmentById(R.id.map))
+	               .getMap();
 	}
 
 	@Override
