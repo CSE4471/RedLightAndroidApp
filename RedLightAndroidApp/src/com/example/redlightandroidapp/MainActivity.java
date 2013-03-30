@@ -27,14 +27,25 @@ public class MainActivity extends FragmentActivity {
 	               .getMap();
 	               
 	        //BELOW IS CODE FOR CALLING THE HTTPREQUEST FUNCTION AND FILLING IN MARKERS
+		/*
+			getPoints(LAT, LON, DIST);
 	        ArrayList<String> set;
+	        double lat, lon;
 	        for (int i=0; i< points.size(); i++){
-			set = points.get(i);
-			 Marker marker = map.addMarker(new MarkerOptions()
-     				.position(new LatLng(set.get(3), set.get(4)))
+	        	set = points.get(i);
+				 try{
+				  lat = Double.valueOf(set.get(3).trim()).doubleValue();
+				  lon = Double.valueOf(set.get(4).trim()).doubleValue();
+				 	}
+				    catch (NumberFormatException e){
+				    System.out.println("NumberFormatException: " + e.getMessage());
+				    }
+	        	Marker marker = map.addMarker(new MarkerOptions()
+     				.position(new LatLng(lat, lon))
      				.title(set.get(2))
      				.snippet(set.get(1) + ", " + set.get(0)));
 	        }
+	        */
 	}
 
 	@Override
