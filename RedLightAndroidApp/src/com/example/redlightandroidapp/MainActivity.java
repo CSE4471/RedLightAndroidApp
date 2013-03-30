@@ -57,8 +57,45 @@ public class MainActivity extends FragmentActivity {
 	
 		
 	public static void getPoints(double myLat, double myLon, int myDist) {
+			// Creating HTTP client
+		HttpClient httpClient = new DefaultHttpClient();
+		 
+		// Creating HTTP Post
+		HttpPost httpPost = new HttpPost("http://redlights.herokuapp.com/in_proximity_of");
+		
+		List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(3);
+		nameValuePair.add(new BasicNameValuePair("latitude", String.valueOf(myLat)));
+		nameValuePair.add(new BasicNameValuePair("longitude", String.valueOf(myLon)));
+		nameValuePair.add(new BasicNameValuePair("distance_in_miles", String.valueOf(myDist)));
+		String body="";
+		
+		
+		// Url Encoding the POST parameters
+		try {
+		    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
+		}
+		catch (UnsupportedEncodingException e) {
+		    // writing error to Log
+		    e.printStackTrace();
+		}
+		
+		// Making HTTP Request
+		try {
+		    HttpResponse response = httpClient.execute(httpPost);
+		 
+		    // writing response to log
+		    body = response.toString();
+		 
+		} catch (ClientProtocolException e) {
+		    // writing exception to log
+		    e.printStackTrace();
+		 
+		} catch (IOException e) {
+		    // writing exception to log
+		    e.printStackTrace();
+		}
 		// TODO Auto-generated method stub
-		String body = HttpRequest.get("http://redlights.herokuapp.com/in_proximity_of", true, "latitude", myLat, "longitude", myLon,"distance_in_miles",myDist).body();
+		//NOT USED String body = HttpRequest.get("http://redlights.herokuapp.com/in_proximity_of", true, "latitude", myLat, "longitude", myLon,"distance_in_miles",myDist).body();
 		//System.out.println(body);
 		//body = body.substring(69); //may need to change this index if the header changes, and perhaps define it somewhere
 		String longitude="", latitude="", city="", state="", name="", entry = "", trash = "";
