@@ -25,6 +25,16 @@ public class MainActivity extends FragmentActivity {
 		
 		map = ((SupportMapFragment)  getSupportFragmentManager().findFragmentById(R.id.map))
 	               .getMap();
+	               
+	        //BELOW IS CODE FOR CALLING THE HTTPREQUEST FUNCTION AND FILLING IN MARKERS
+	        ArrayList<String> set;
+	        for (int i=0; i< points.size(); i++){
+			set = points.get(i);
+			 Marker marker = map.addMarker(new MarkerOptions()
+     				.position(new LatLng(set.get(3), set.get(4)))
+     				.title(set.get(2))
+     				.snippet(set.get(1) + ", " + set.get(0)));
+	        }
 	}
 
 	@Override
